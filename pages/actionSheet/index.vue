@@ -4,21 +4,12 @@
     <var-button type="primary" block @click="createBasic">Basic Usage</var-button>
     <var-button type="primary" block @click="modifyTitle">Modify Title</var-button>
     <var-button type="primary" block @click="disableAction">Action Disabled</var-button>
-    <var-button
-      type="primary"
-      block
-      @click="disableCloseOnClickAction"
-    >Disable close on click action</var-button>
+    <var-button type="primary" block @click="disableCloseOnClickAction">Disable close on click action</var-button>
     <var-button type="primary" block @click="customActionStyles">Custom Action Styles</var-button>
 
     <app-type>Component Call</app-type>
     <var-button type="warning" block @click="show = true">Basic Usage</var-button>
-    <var-action-sheet
-      title="Select One"
-      :actions="actions"
-      v-model:show="show"
-      @select="handleSelect"
-    />
+    <var-action-sheet title="Select One" :actions="actions" v-model:show="show" @select="handleSelect" />
 
     <var-button type="warning" block @click="show1 = true">Modify Title</var-button>
     <var-action-sheet
@@ -29,12 +20,7 @@
     />
 
     <var-button type="warning" block @click="show2 = true">Action Disabled</var-button>
-    <var-action-sheet
-      title="Select One"
-      :actions="disabledActions"
-      v-model:show="show2"
-      @select="handleSelect"
-    />
+    <var-action-sheet title="Select One" :actions="disabledActions" v-model:show="show2" @select="handleSelect" />
 
     <var-button type="warning" block @click="show3 = true">Disable close on click action</var-button>
     <var-action-sheet
@@ -46,12 +32,7 @@
     />
 
     <var-button type="warning" block @click="show4 = true">Custom Action Styles</var-button>
-    <var-action-sheet
-      title="Select One"
-      :actions="customStyleActions"
-      v-model:show="show4"
-      @select="handleSelect"
-    />
+    <var-action-sheet title="Select One" :actions="customStyleActions" v-model:show="show4" @select="handleSelect" />
   </div>
 </template>
 
@@ -139,7 +120,7 @@ export default defineNuxtComponent({
     const disableAction = async () => {
       const action = await ActionSheet({
         actions: rawDisabledActions,
-        title: 'Select One'
+        title: 'Select One',
       })
 
       action !== 'close' && Snackbar(`Your selected is:${action.name}`)
@@ -148,7 +129,7 @@ export default defineNuxtComponent({
     const customActionStyles = async () => {
       const action = await ActionSheet({
         actions: rawCustomStyleActions,
-        title: 'Select One'
+        title: 'Select One',
       })
 
       action !== 'close' && Snackbar(`Your selected is:${action.name}`)
@@ -179,9 +160,6 @@ export default defineNuxtComponent({
     const handleSelect = (action) => {
       Snackbar(`Your selected is:${action.name}`)
     }
-
-
-
 
     return {
       show,
